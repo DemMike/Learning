@@ -1,0 +1,95 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace извлечение_значений_массива
+{
+    internal class Program
+    {
+        static int[] GetRandomArray(int length, int minValue, int maxValue)
+            
+        {
+            
+            Random random = new Random();            
+            int [] array=new int[length];
+            
+            for (int i = 0; i<length; i++)
+			{            
+                array[i]=random.Next(minValue, maxValue);
+			}
+           
+            return array;
+           
+        }
+
+        static void PrintArray(int[] array) 
+        {
+                        
+            for (int i = 0; i<array.Length; i++)
+			{
+                Console.Write(array[i]+"\t");
+			}
+
+        }
+
+        static void Main(string[] args)
+        {
+            int[] myArray = GetRandomArray(10, -10, 10);
+
+            PrintArray(myArray);
+
+            Console.WriteLine("\n");
+
+            
+            //извлечение четных значений
+
+            int[] resultArray = myArray.Where(i => i % 2 == 0).ToArray();
+
+            PrintArray(resultArray);
+
+            Console.WriteLine("\n");
+
+            
+            //извлечение отрицательных значений
+
+            int[] resultArray2 = myArray.Where(i => i <0).ToArray();
+
+            PrintArray(resultArray2);
+
+            Console.WriteLine("\n");
+
+
+            //извлечение индексов нечетных значений
+
+            int count =0;       
+
+            for (int i = 0;i < myArray.Length; i++) 
+            {
+                
+                if (myArray[i]%2!=0)
+                {
+                    count++;
+                }            
+            }
+            
+            int[] resultArray3=new int[count];
+
+            for (int i=0,j=0; i<myArray.Length; i++)
+            {
+
+                if (myArray[i]%2!=0)
+                {
+                    resultArray3[j] = i;
+                    j++;
+                }     
+
+            }              
+                               
+            PrintArray(resultArray3);
+
+            Console.WriteLine();
+        }
+    }
+}
