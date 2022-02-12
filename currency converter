@@ -1,0 +1,110 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace конвертер
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            while (true)
+            {
+
+                Console.Clear();
+
+                float eurrub = 87.16f;
+                float usdrub = 76.05f;
+                float eurusd = 1.14f;
+
+                Console.WriteLine("Выберите валюту для обмена: RUB,EUR,USD");
+                string x = Console.ReadLine();
+
+                if (x != "RUB" && x != "USD" && x != "EUR")
+                {
+                    Console.WriteLine("Некорретный выбор! Выберите значение из списка: RUB, EUR, USD");
+                    Console.ReadLine();
+                    break;
+                }
+
+                Console.WriteLine("Введите сумму:");
+                float xValue = float.Parse(Console.ReadLine());
+
+                Console.WriteLine("Выберите желаемую валюту: RUB,EUR,USD");
+                string y = Console.ReadLine();
+
+                if (y != "RUB" && y != "USD" && y != "EUR")
+                {
+                    Console.WriteLine("Некорретный выбор! Выберите значение из списка: RUB, EUR, USD");
+                    Console.ReadLine();
+                    break;
+
+                }
+
+                if (x == "RUB")
+                {
+                    switch (y)
+                    {
+                        case "EUR":
+                            Console.WriteLine($"{xValue}{x} в {y} равно {Math.Round(xValue / eurrub,2)}");
+                            break;
+
+                        case "USD":
+                            Console.WriteLine($"{xValue}{x} в {y} равно {Math.Round(xValue / usdrub,2)}");
+                            break;
+
+                        case "RUB":
+                            Console.WriteLine("???");
+                            break;
+                    }
+                }
+
+                if (x == "EUR")
+                {
+                    switch (y)
+                    {
+                        case "RUB":
+                            Console.WriteLine($"{xValue}{x} в {y} равно {Math.Round(xValue * eurrub,2)}");
+                            break;
+
+                        case "USD":
+                            Console.WriteLine($"{xValue}{x} в {y} равно {Math.Round(xValue * eurusd,2)}");
+                            break;
+
+                        case "EUR":
+                            Console.WriteLine("???");
+                            break;
+                    }
+                }
+
+
+                if (x == "USD")
+                {
+                    switch (y)
+                    {
+                        case "RUB":
+                            Console.WriteLine($"{xValue}{x} в {y} равно {Math.Round(xValue * usdrub, 2)}");
+                            break;
+
+                        case "EUR":
+                            Console.WriteLine($"{xValue}{x} в {y} равно {Math.Round(xValue / eurusd, 2)}");
+                            break;
+
+                        case "USD":
+                            Console.WriteLine("???");
+                            break;
+                    }
+                }
+
+                
+                Console.ReadLine();
+            }
+                        
+        }
+
+            
+        
+    }
+}
